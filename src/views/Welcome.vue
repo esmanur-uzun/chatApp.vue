@@ -1,14 +1,13 @@
 <template>
-    <div>
-        <router-link :to="{name:'Chatroom'}">chat</router-link>
-       
-    </div>
+  <div>welcome</div>
 </template>
 
-<script setup>
+<script>
+export default {
 
+}
 </script>
 
-<style lang="scss" scoped>
+<style>
 
 </style>

@@ -6,7 +6,7 @@ const routes= [
         component : () => import ("../views/Welcome.vue")
     },
     {
-        name:"Chatroom",
+        name:"ChatRoom",
         path: "/chatroom",
         component : () => import("../views/ChatRoom.vue")
     }
