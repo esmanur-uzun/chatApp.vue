@@ -9,6 +9,16 @@ const routes= [
         name:"ChatRoom",
         path: "/chatroom",
         component : () => import("../views/ChatRoom.vue")
+    },
+    {
+        name:"SignUp",
+        path: "/signup",
+        component : () => import("../components/SignUp.vue")
+    },
+    {
+        name:"Login",
+        path: "/login",
+        component : () => import("../components/Login.vue")
     }
 ]
 
