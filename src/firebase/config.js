@@ -2,6 +2,7 @@
 
 import firebase from "firebase/app"
 import "firebase/firestore"
+import 'firebase/auth'
 const firebaseConfig = {
     apiKey: "AIzaSyAiUhanXDttQRWX85gg1TkR5npYVMen450",
     authDomain: "chatappvue3-d8456.firebaseapp.com",
@@ -14,7 +15,8 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig)
 
+const projectAuth = firebase.auth()
 const projectFirestore = firebase.firestore()
 const timestamp = firebase.firestore.FieldValue.serverTimestamp
 
-export {projectFirestore,timestamp}
+export {projectFirestore,timestamp, projectAuth}
