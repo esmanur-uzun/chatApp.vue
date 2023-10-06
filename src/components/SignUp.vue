@@ -31,11 +31,13 @@
       <label for="floatingPassword">Password</label>
     </div>
     <button type="submit" class="btn-danger btn">Sign Up</button>
+    <div class="err">{{ error }}</div>
+    
   </form>
 </template>
 
 <script>
-
+import useSignup from '../composables/useSignup';
 export default {
     data(){
         return{
@@ -43,14 +45,18 @@ export default {
                 fullName: null,
                 email: null,
                 password: null
-            }
+            },
+            error : ""
         }
     },
     methods:{
-        handleSubmit(){
-            console.log(this.userData)
-        }
-    }
+
+      async handleSubmit() {
+        const {error , signup} = useSignup()
+        await signup (this.userData.email, this.userData.password, this.userData.fullName)
+        this.error = error
+      }
+    },
 };
 </script>
 
