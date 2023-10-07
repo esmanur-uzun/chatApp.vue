@@ -21,18 +21,34 @@
       <label for="floatingPassword">Password</label>
     </div>
     <button type="submit" class="btn-danger btn">Login</button>
+    <div class="err">{{ err }}</div>
   </form>
 </template>
 
 <script>
+import useLogin from '../composables/useLogin';
 export default {
     data(){
         return{
             userData:{
                 email:null,
                 password:null
-            }
+            },
+            err: null
         }
+    },
+    methods:{
+      async submit(){
+        const {login, error} = useLogin()
+        await login(this.userData.email, this.userData.password)
+
+        if(!error.value){
+          console.log("Login Success")
+        }
+        else{
+          this.err= error.value
+        }
+      }
     }
 }
 </script>
