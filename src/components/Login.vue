@@ -43,7 +43,7 @@ export default {
         await login(this.userData.email, this.userData.password)
 
         if(!error.value){
-          console.log("Login Success")
+          this.$router.push({name: "ChatRoom"})
         }
         else{
           this.err= error.value

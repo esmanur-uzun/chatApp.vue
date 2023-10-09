@@ -31,7 +31,7 @@
       <label for="floatingPassword">Password</label>
     </div>
     <button type="submit" class="btn-danger btn">Sign Up</button>
-    <div class="err">{{ error }}</div>
+    <div class="err">{{ er }}</div>
     
   </form>
 </template>
@@ -46,7 +46,7 @@ export default {
                 email: null,
                 password: null
             },
-            error : ""
+            err : ""
         }
     },
     methods:{
@@ -54,7 +54,13 @@ export default {
       async handleSubmit() {
         const {error , signup} = useSignup()
         await signup (this.userData.email, this.userData.password, this.userData.fullName)
-        this.error = error
+        if(!error.value){
+          this.$router.push({name: "Login"})
+        }
+        else{
+          this.err = error
+        }
+        
       }
     },
 };
