@@ -1,4 +1,17 @@
 import { createRouter, createWebHashHistory } from "vue-router";
+import { projectAuth } from "../firebase/config";
+
+const requireAuth = (to,from,next) =>{
+    let user  = projectAuth.currentUser
+
+    if(!user){
+        next({name: 'Welcome'})
+    }
+    else{
+        next()
+    }
+}
+
 const routes= [
     {
         name: "Welcome",
