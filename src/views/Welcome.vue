@@ -4,7 +4,7 @@
       <div class="beginning-page pt-4 pb-4 row flex-wrap d-flex justify-content-center align-items-center">
         <div class="col-lg-5">
           <div class="main-photo">
-            <img src="../assets/medias/2937927.jpg" alt="">
+            <img class="vector" src="../assets/medias/2937927.jpg" alt="">
           </div>
         </div>
         <div class="col-lg-5">
@@ -29,21 +29,10 @@ $body-color : #a8dadc;
 $white-color: #fff;
 .main-container{
   height: 100vh;
-  background-color:$body-color;
+  background-color:$white-color;
 }
 .beginning-page{
-  background-color: $white-color;
+  background-color: $body-color;
   border-radius: 20px;
-}
-.main-photo{
-  width: 100%;
-  height: 60vh;
-  img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 20px;
-  }
- 
 }
 </style>
