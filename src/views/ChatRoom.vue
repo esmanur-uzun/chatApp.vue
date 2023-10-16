@@ -1,11 +1,15 @@
 <template>
-  <div>chat</div>
+  <div>
+    <navbar></navbar>
+  </div>
 </template>
 
 <script>
 import { watch } from 'vue'
 import getUser from "../composables/getUser"
+import Navbar from '../components/Navbar.vue'
 export default {
+  components: { Navbar },
   created(){
     const {user} = getUser()
     
