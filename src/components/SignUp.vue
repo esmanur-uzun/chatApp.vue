@@ -46,6 +46,11 @@
             <label for="floatingPassword">Password</label>
           </div>
           <button type="submit" class="btn-danger mt-4 btn">Sign Up</button>
+          <span class="d-flex align-items-end pt-3">
+            Do you have an account? 
+            <router-link :to="{name:'Welcome'}">Please login</router-link>
+
+          </span>
         </form>
         </div>
         

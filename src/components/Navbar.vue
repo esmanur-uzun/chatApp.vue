@@ -10,12 +10,11 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            Dropdown button
+            <span>Name</span>
           </button>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><button class="dropdown-item account btn" >Account</button></li>
+            <li><button @click="logOut" class="dropdown-item logout btn" >Log Out</button></li>
           </ul>
         </div>
       </div>
@@ -24,7 +23,19 @@
 </template>
 
 <script>
-export default {};
+import useLogout from "../composables/useLogout"
+export default {
+  methods:{
+    async logOut(){
+      const {logout, error} = useLogout()
+      await logout()
+      if(!error.value){
+        this.$router.push({name:"Welcome"})
+      }
+    }
+  }
+};
+
 </script>
 
 <style lang="scss" scoped>
@@ -33,6 +44,16 @@ $color : #3e5c76;
     background-color: $color;
     .navbar-brand{
         color: white;
+    }
+    .logout{
+      background-color: rgb(200, 30, 30);
+      color: #fff;
+      border-radius: 10px;
+    }
+    .account{
+      background-color: rgb(103, 193, 103);
+      color: #fff;
+      border-radius: 10px;
     }
 }
 </style>
