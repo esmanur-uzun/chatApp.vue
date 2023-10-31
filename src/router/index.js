@@ -1,16 +1,6 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import { projectAuth } from "../firebase/config";
 
-const requireAuth = (to,from,next) =>{
-    let user  = projectAuth.currentUser
-
-    if(!user){
-        next({name: 'Welcome'})
-    }
-    else{
-        next()
-    }
-}
 
 const routes= [
     {
@@ -22,6 +12,7 @@ const routes= [
         name:"ChatRoom",
         path: "/chatroom",
         component : () => import("../views/ChatRoom.vue")
+        
     },
     {
         name:"SignUp",
@@ -40,6 +31,20 @@ const router = createRouter({
     history: createWebHashHistory()
 })
 
-// router.beforeEach()
+router.beforeEach((to,_,next) => {
+    const authRequiredRoutes = ["ChatRoom"];
+    const authNotRequiredRoutes = ["Welcome","SignUp"];
+    const _isAuthenticated = projectAuth.currentUser;
+
+    if(authNotRequiredRoutes.indexOf(to.name) > -1 && _isAuthenticated) next(false);
+    if(authRequiredRoutes.indexOf(to.name) > -1){
+        if(_isAuthenticated) next()
+        else next({name: "Welcome"})
+    }
+    else{
+        next()
+    }
+})
+
 
 export default  router

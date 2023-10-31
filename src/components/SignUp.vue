@@ -19,7 +19,7 @@
               id="floatingInput"
               placeholder="Name Surname"
               required
-              v-model="userData.fullName"
+              v-model="userData.displayName"
             />
             <label for="floatingInput">Full name</label>
           </div>
@@ -65,7 +65,7 @@ export default {
   data() {
     return {
       userData: {
-        fullName: null,
+        displayName: null,
         email: null,
         password: null,
       },
@@ -78,7 +78,7 @@ export default {
       await signup(
         this.userData.email,
         this.userData.password,
-        this.userData.fullName
+        this.userData.displayName
       );
       if (!error.value) {
         this.$router.push({ name: "ChatRoom" });

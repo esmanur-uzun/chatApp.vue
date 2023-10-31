@@ -10,7 +10,7 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            <span>Name</span>
+            <span>{{userData.displayName }}</span>
           </button>
           <ul class="dropdown-menu">
             <li><button class="dropdown-item account btn" >Account</button></li>
@@ -23,8 +23,19 @@
 </template>
 
 <script>
+import getUser from '../composables/getUser';
 import useLogout from "../composables/useLogout"
 export default {
+  data(){
+    return{
+      userData: null
+    }
+  },
+  created(){
+    const {user} = getUser()
+    this.userData = user.value
+    
+  },
   methods:{
     async logOut(){
       const {logout, error} = useLogout()
@@ -32,7 +43,7 @@ export default {
       if(!error.value){
         this.$router.push({name:"Welcome"})
       }
-    }
+    },
   }
 };
 
